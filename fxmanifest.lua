@@ -2,12 +2,13 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 "true"
 
-author "Mrlion"
+author "Mrlion (@lostedmrlion)"
+description "Recoil script with many features!"
 version "1.0"
 
 shared_scripts {
+    '@ox_lib/init.lua',
     "config.lua",
-    "@ox_lib/init.lua"
 }
 
 client_scripts {
