@@ -8,6 +8,7 @@
 - Custom damage
 - Custom recoil
 - Custom shake
+- Disables Crosshair
 - Addon weapons suppport
 - Realistic flashlight
 - Easy to use
