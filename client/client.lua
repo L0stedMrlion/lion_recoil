@@ -1,4 +1,5 @@
 local weapons = Config.Weapons
+local ped = PlayerPedId()
 
 local function applyRecoil(ped, weapon)
     local startTime = GetGameTimer()
@@ -13,7 +14,6 @@ end
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-        local ped = PlayerPedId()
         local weapon = GetSelectedPedWeapon(ped)
 
         if IsPedShooting(ped) and weapons[weapon] then
@@ -26,35 +26,36 @@ Citizen.CreateThread(function()
         if Config.DisableCrosshair and IsPedArmed(ped, 6) then
             HideHudComponentThisFrame(14)
         end
+        if Config.DisableAmmoHUD then
+            DisplayAmmoThisFrame(false)
+        end
+        if Config.DisableHealthRegeneration then
+            SetPlayerHealthRechargeMultiplier(ped, 0.0)
+        end
     end
 end)
 
-local ped = PlayerPedId()
+Citizen.CreateThread(function()
+
+    if Config.DisableHeadshots then
+        SetPedSuffersCriticalHits(ped, false)
+    end
+
+    if Config.RealisticFlashlight then
+        SetFlashLightKeepOnWhileMoving(true)
+    end
+end)
 
 Citizen.CreateThread(function()
-  if Config.DisableHeadshots then
-    SetPedSuffersCriticalHits(ped, false)
-  end
-
-  if Config.RealisticFlashlight then
-    SetFlashLightKeepOnWhileMoving(true)
-  end
-
-  if Config.DisableAimPunching and IsPedArmed(ped, 4) then
-      DisableControlAction(1, 140, true)
-      DisableControlAction(1, 141, true)
-      DisableControlAction(1, 142, true)
-  end
-
-  while Config.DisableCombatRoll do
-      while not IsPedArmed(ped, 6) do
-          Citizen.Wait(0)
-      end
-
-      if IsControlPressed(0, 25) then
-          DisableControlAction(0, 22, true)
-      end
-
-      Citizen.Wait(0)
-  end
+    while Config.DisableAimPunching do
+        if IsPedArmed(ped, 6) then
+            DisableControlAction(1, 140, true)
+            DisableControlAction(1, 141, true)
+            DisableControlAction(1, 142, true)
+            Citizen.Wait(25)
+        else
+            Citizen.Wait(1000)
+        end
+    end
 end)
+
