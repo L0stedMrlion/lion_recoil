@@ -1,10 +1,10 @@
 Config = {}
-Config.UpdateCheck = true
-Config.DisableCrosshair = true
-Config.DisableCombatRoll = true
 Config.RealisticFlashlight = true
 Config.DisableHeadshots = true
 Config.DisableAimPunching = true
+Config.DisplayAmmo = true
+Config.DisableCrosshair = true
+Config.DisableHealthRegeneration = true
 Config.Weapons = {
   [GetHashKey('WEAPON_COMBATPISTOL')] = {recoil = 0.0, shake = 0.08, damage = 0.45},
   [GetHashKey('WEAPON_STUNGUN')] = {recoil = 0.0, shake = 0.0, damage = 0.0},
