@@ -4,7 +4,7 @@ lua54 "true"
 
 author "Mrlion (@lostedmrlion)"
 description "Recoil script with many features!"
-version "1.0"
+version "1.1.1"
 
 shared_scripts {
     '@ox_lib/init.lua',
@@ -13,8 +13,4 @@ shared_scripts {
 
 client_scripts {
     "client/*"
-}
-
-server_scripts {
-    "server/*"
 }
