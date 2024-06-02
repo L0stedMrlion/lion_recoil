@@ -7,8 +7,7 @@ description "Recoil script with many features!"
 version "1.1.1"
 
 shared_scripts {
-    '@ox_lib/init.lua',
-    "config.lua",
+    "config.lua"
 }
 
 client_scripts {
