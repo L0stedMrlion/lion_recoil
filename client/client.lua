@@ -1,5 +1,4 @@
 local weapons = Config.Weapons
-local ped = PlayerPedId()
 
 local function applyRecoil(ped, weapon)
     local startTime = GetGameTimer()
@@ -12,8 +11,10 @@ local function applyRecoil(ped, weapon)
 end
 
 Citizen.CreateThread(function()
+    local ped = PlayerPedId()
     while true do
         Citizen.Wait(0)
+        ped = PlayerPedId()
         local weapon = GetSelectedPedWeapon(ped)
 
         if IsPedShooting(ped) and weapons[weapon] then
@@ -36,6 +37,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
+    local ped = PlayerPedId()
 
     if Config.DisableHeadshots then
         SetPedSuffersCriticalHits(ped, false)
@@ -47,6 +49,8 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
+    local ped = PlayerPedId()
+
     while Config.DisableAimPunching do
         if IsPedArmed(ped, 6) then
             DisableControlAction(1, 140, true)
@@ -58,4 +62,3 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
