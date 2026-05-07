@@ -1,64 +1,106 @@
-local weapons = Config.Weapons
+local config = require 'config'
+
+local RecoilSettings = {}
+for name, data in pairs(config.RecoilSettings) do
+    RecoilSettings[joaat(name)] = data
+end
+
+local isWeaponLoopRunning = false
 
 local function applyRecoil(ped, weapon)
-    local startTime = GetGameTimer()
-    while (GetGameTimer() - startTime) / 1000 < weapons[weapon].recoil do
+    local weaponData = RecoilSettings[weapon] or RecoilSettings[GetWeapontypeGroup(weapon)]
+    if not weaponData then return end
+
+    local recoilTime = GetGameTimer() + (weaponData.recoil * 1000)
+
+    while GetGameTimer() < recoilTime do
         if GetFollowPedCamViewMode() ~= 4 then
-            SetGameplayCamRelativePitch(GetGameplayCamRelativePitch() + 0.1, 0.2)
+            SetGameplayCamRelativePitch(
+                GetGameplayCamRelativePitch() + 0.1,
+                0.2
+            )
         end
-        Citizen.Wait(0)
+        Wait(0)
     end
 end
 
-Citizen.CreateThread(function()
-    local ped = PlayerPedId()
-    while true do
-        Citizen.Wait(0)
-        ped = PlayerPedId()
-        local weapon = GetSelectedPedWeapon(ped)
+local function startWeaponLoop()
+    if isWeaponLoopRunning then return end
+    isWeaponLoopRunning = true
 
-        if IsPedShooting(ped) and weapons[weapon] then
-            ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', weapons[weapon].shake)
-            if weapons[weapon].recoil ~= 0 and not IsPedDoingDriveby(ped) then
-                applyRecoil(ped, weapon)
+    CreateThread(function()
+        while cache.weapon do
+            local ped = cache.ped
+            local weapon = cache.weapon
+            local weaponData = RecoilSettings[weapon] or RecoilSettings[GetWeapontypeGroup(weapon)]
+
+            if weaponData then
+                if config.DisableAimPunching then
+                    DisableControlAction(1, 140, true)
+                    DisableControlAction(1, 141, true)
+                    DisableControlAction(1, 142, true)
+                end
+
+                if IsPedShooting(ped) then
+                    ShakeGameplayCam(
+                        'SMALL_EXPLOSION_SHAKE',
+                        weaponData.shake
+                    )
+
+                    if weaponData.recoil ~= 0 and not IsPedDoingDriveby(ped) then
+                        applyRecoil(ped, weapon)
+                    end
+                end
             end
+
+            Wait(0)
         end
 
-        if Config.DisableCrosshair and IsPedArmed(ped, 6) then
-            HideHudComponentThisFrame(14)
+        isWeaponLoopRunning = false
+    end)
+end
+
+-- Full credit to Randolio, implemented from qbox Discord from code-snippets
+-- Message link: https://discord.com/channels/1012753553418354748/1277102648192929823/1277102648192929823
+local function checkCombatRoll()
+    CreateThread(function()
+        while cache.weapon do
+            SetPedResetFlag(cache.ped, 446, true)
+            Wait(0)
         end
-        if Config.DisableAmmoHUD then
-            DisplayAmmoThisFrame(false)
+    end)
+end
+
+lib.onCache('weapon', function(weapon)
+    if weapon then
+        local weaponData = RecoilSettings[weapon] or RecoilSettings[GetWeapontypeGroup(weapon)]
+        if weaponData and weaponData.damage then
+            SetWeaponDamageModifier(weapon, weaponData.damage)
         end
-        if Config.DisableHealthRegeneration then
-            SetPlayerHealthRechargeMultiplier(ped, 0.0)
+
+        startWeaponLoop()
+        if config.DisableCombatRoll then
+            checkCombatRoll()
         end
     end
 end)
 
-Citizen.CreateThread(function()
-    local ped = PlayerPedId()
 
-    if Config.DisableHeadshots then
-        SetPedSuffersCriticalHits(ped, false)
-    end
-
-    if Config.RealisticFlashlight then
+CreateThread(function()
+    if config.RealisticFlashlight then
         SetFlashLightKeepOnWhileMoving(true)
     end
 end)
 
-Citizen.CreateThread(function()
-    local ped = PlayerPedId()
+CreateThread(function()
+    while config.DisableHeadshots do
+        SetPedSuffersCriticalHits(cache.ped, false)
+        Wait(5000)
+    end
+end)
 
-    while Config.DisableAimPunching do
-        if IsPedArmed(ped, 6) then
-            DisableControlAction(1, 140, true)
-            DisableControlAction(1, 141, true)
-            DisableControlAction(1, 142, true)
-            Citizen.Wait(25)
-        else
-            Citizen.Wait(1000)
-        end
+CreateThread(function()
+    if config.DisableHealthRegeneration then
+        SetPlayerHealthRechargeMultiplier(PlayerId(), 0.0)
     end
 end)
