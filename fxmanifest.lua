@@ -3,13 +3,17 @@ game 'gta5'
 lua54 "true"
 
 author "Mrlion (@lostedmrlion)"
-description "Recoil script with many features!"
-version "1.1.1"
+description "Recoil system solution for your server"
+version "2.0"
 
 shared_scripts {
-    "config.lua"
+    '@ox_lib/init.lua',
 }
 
 client_scripts {
     "client/*"
+}
+
+files {
+    "config.lua"
 }
