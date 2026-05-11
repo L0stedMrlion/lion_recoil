@@ -16,5 +16,5 @@ client_scripts {
 
 files {
     "config.lua",
-    "hud_reticle.gfx"
+    "stream/hud_reticle.gfx"
 }
