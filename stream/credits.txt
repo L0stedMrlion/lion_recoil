@@ -1,0 +1,3 @@
+Full credits for reticle hider using streamed files:
+
+https://github.com/entarukun/Syn_Hide_Reticle
