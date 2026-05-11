@@ -41,7 +41,6 @@ return {
     ['GROUP_HEAVY'] = { recoil = 2.0, shake = 0.25, damage = 1.0 },
 
     -- [GROUP_PISTOL]
-    ['GROUP_PISTOL'] = { recoil = 0.4, shake = 0.02, damage = 1.0 },
     ['WEAPON_PISTOL'] = { recoil = 0.5, shake = 0.02, damage = 1.0 },
     ['WEAPON_COMBATPISTOL'] = { recoil = 0.6, shake = 0.03, damage = 1.1 },
     ['WEAPON_APPISTOL'] = { recoil = 0.4, shake = 0.05, damage = 0.8 },
@@ -53,7 +52,6 @@ return {
     ['WEAPON_MARKSMANPISTOL'] = { recoil = 1.5, shake = 0.10, damage = 2.2 },
 
     -- [GROUP_SUBMACHINE]
-    ['GROUP_SUBMACHINE'] = { recoil = 0.5, shake = 0.04, damage = 0.8 },
     ['WEAPON_MICROSMG'] = { recoil = 0.4, shake = 0.06, damage = 0.7 },
     ['WEAPON_SMG'] = { recoil = 0.5, shake = 0.05, damage = 0.8 },
     ['WEAPON_ASSAULTSMG'] = { recoil = 0.45, shake = 0.05, damage = 0.9 },
@@ -62,7 +60,6 @@ return {
     ['WEAPON_MINISMG'] = { recoil = 0.6, shake = 0.08, damage = 0.7 },
 
     -- [GROUP_RIFLE]
-    ['GROUP_RIFLE'] = { recoil = 0.7, shake = 0.05, damage = 1.0 },
     ['WEAPON_ASSAULTRIFLE'] = { recoil = 0.7, shake = 0.06, damage = 1.0 },
     ['WEAPON_CARBINERIFLE'] = { recoil = 0.65, shake = 0.05, damage = 1.0 },
     ['WEAPON_ADVANCEDRIFLE'] = { recoil = 0.75, shake = 0.06, damage = 1.1 },
@@ -71,7 +68,6 @@ return {
     ['WEAPON_COMPACTRIFLE'] = { recoil = 0.9, shake = 0.09, damage = 0.9 },
 
     -- [GROUP_SHOTGUN]
-    ['GROUP_SHOTGUN'] = { recoil = 1.2, shake = 0.12, damage = 1.0 },
     ['WEAPON_PUMPSHOTGUN'] = { recoil = 1.5, shake = 0.15, damage = 1.0 },
     ['WEAPON_SAWNOFFSHOTGUN'] = { recoil = 2.0, shake = 0.20, damage = 1.2 },
     ['WEAPON_ASSAULTSHOTGUN'] = { recoil = 1.0, shake = 0.12, damage = 0.9 },
@@ -81,13 +77,11 @@ return {
     ['WEAPON_DBSHOTGUN'] = { recoil = 2.2, shake = 0.22, damage = 1.4 },
 
     -- [GROUP_MG]
-    ['GROUP_MG'] = { recoil = 0.9, shake = 0.08, damage = 1.1 },
     ['WEAPON_MG'] = { recoil = 0.9, shake = 0.08, damage = 1.0 },
     ['WEAPON_COMBATMG'] = { recoil = 1.0, shake = 0.10, damage = 1.1 },
     ['WEAPON_GUSENBERG'] = { recoil = 0.8, shake = 0.07, damage = 0.9 },
 
     -- [GROUP_SNIPER]
-    ['GROUP_SNIPER'] = { recoil = 1.5, shake = 0.20, damage = 1.5 },
     ['WEAPON_SNIPERRIFLE'] = { recoil = 2.0, shake = 0.20, damage = 2.0 },
     ['WEAPON_HEAVYSNIPER'] = { recoil = 3.0, shake = 0.30, damage = 3.0 },
     ['WEAPON_MARKSMANRIFLE'] = { recoil = 0.8, shake = 0.08, damage = 1.2 },
