@@ -1,4 +1,13 @@
+--  _      _____ ____  _   _     _____  ______ _____ ____ _____ _      
+--| |    |_   _/ __ \| \ | |    |  __ \|  ____/ ____/ __ \_   _| |     
+--| |      | || |  | |  \| |    | |__) | |__ | |   | |  | || | | |     
+--| |      | || |  | | . ` |    |  _  /|  __|| |   | |  | || | | |     
+--| |____ _| || |__| | |\  |    | | \ \| |___| |___| |__| || |_| |____ 
+--|______|_____\____/|_| \_|    |_|  \_\______\_____\____/_____|______|
+-- By @Mrlion                                                                 
 return {
+  -- Enables/disables version check of new update for this script
+  VersionCheck = true, 
   -- Flashlights get a realistic flashlight when toggled not aim, the flashlight is still visible
   RealisticFlashlight = true,
 
