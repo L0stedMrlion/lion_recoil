@@ -30,7 +30,7 @@ return {
     ['GROUP_MG'] = { recoil = 0.9, shake = 0.08, damage = 1.1 },
     ['GROUP_HEAVY'] = { recoil = 2.0, shake = 0.25, damage = 1.0 },
 
-   -- [GROUP_PISTOL]
+    -- [GROUP_PISTOL]
     ['GROUP_PISTOL'] = { recoil = 0.4, shake = 0.02, damage = 1.0 },
     ['WEAPON_PISTOL'] = { recoil = 0.5, shake = 0.02, damage = 1.0 },
     ['WEAPON_COMBATPISTOL'] = { recoil = 0.6, shake = 0.03, damage = 1.1 },
