@@ -14,6 +14,10 @@ client_scripts {
     "client/*"
 }
 
+server_scripts {
+    "server/*"
+}
+
 files {
     "config.lua",
     "stream/hud_reticle.gfx"
