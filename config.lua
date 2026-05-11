@@ -8,6 +8,7 @@
 return {
   -- Enables/disables version check of new update for this script
   VersionCheck = true, 
+  
   -- Flashlights get a realistic flashlight when toggled not aim, the flashlight is still visible
   RealisticFlashlight = true,
 
