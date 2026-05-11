@@ -15,5 +15,6 @@ client_scripts {
 }
 
 files {
-    "config.lua"
+    "config.lua",
+    "hud_reticle.gfx"
 }
