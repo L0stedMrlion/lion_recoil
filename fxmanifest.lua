@@ -3,7 +3,7 @@ game 'gta5'
 lua54 "true"
 
 author "Mrlion (@lostedmrlion)"
-description "Recoil system solution for your server"
+description "Recoil system solution for your server // (WITHOUT RECOIL VERSION)"
 version "2.0"
 
 shared_scripts {
