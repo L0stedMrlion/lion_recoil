@@ -4,7 +4,7 @@ lua54 "true"
 
 author "Mrlion (@lostedmrlion)"
 description "Recoil system solution for your server"
-version "2.0"
+version "2.1"
 
 shared_scripts {
     '@ox_lib/init.lua',
