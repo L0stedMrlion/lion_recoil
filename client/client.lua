@@ -7,11 +7,33 @@ end
 
 local isWeaponLoopRunning = false
 local isDrunkAimingActive = false
+local DrunkAimingExcludedWeapons = {}
+
+for _, name in ipairs(config.DrunkAiming.ExcludedWeapons or {}) do
+    DrunkAimingExcludedWeapons[joaat(name)] = true
+end
 
 local function stopDrunkAiming()
     if not isDrunkAimingActive then return end
-    Citizen.InvokeNative(0x4285804FD65D8066, 'DRUNK_SHAKE', true)
+    ShakeGameplayCam('DRUNK_SHAKE', 0.0)
     isDrunkAimingActive = false
+end
+
+local function updateDrunkAiming(ped, weapon)
+    if not config.DrunkAiming.Enabled or config.DrunkAiming.Intensity <= 0
+        or DrunkAimingExcludedWeapons[weapon] or not IsPedArmed(ped, 6) then
+        stopDrunkAiming()
+        return
+    end
+
+    if IsPlayerFreeAiming(PlayerId()) or IsPedShooting(ped) then
+        if not isDrunkAimingActive or not IsGameplayCamShaking() then
+            ShakeGameplayCam('DRUNK_SHAKE', config.DrunkAiming.Intensity)
+            isDrunkAimingActive = true
+        end
+    else
+        stopDrunkAiming()
+    end
 end
 
 local function applyRecoil(ped, weapon)
@@ -41,17 +63,6 @@ local function startWeaponLoop()
             local weapon = cache.weapon
             local weaponData = RecoilSettings[weapon] or RecoilSettings[GetWeapontypeGroup(weapon)]
 
-            if config.DrunkAiming.Enabled and config.DrunkAiming.Intensity > 0 then
-                if IsAimCamActive() then
-                    if not isDrunkAimingActive then
-                        ShakeGameplayCam('DRUNK_SHAKE', config.DrunkAiming.Intensity)
-                        isDrunkAimingActive = true
-                    end
-                else
-                    stopDrunkAiming()
-                end
-            end
-
             if weaponData then
                 if config.DisableAimPunching then
                     DisableControlAction(1, 140, true)
@@ -70,6 +81,8 @@ local function startWeaponLoop()
                     end
                 end
             end
+
+            updateDrunkAiming(ped, weapon)
 
             Wait(0)
         end
