@@ -26,8 +26,11 @@ return {
 
   -- Adds camera shake while aiming (0.0 intensity disables the effect)
   DrunkAiming = {
-    Enabled = false,
-    Intensity = 0.35,
+    Enabled = true,
+    Intensity = 1.0,
+    ExcludedWeapons = {
+      -- e.g. Add "WEAPON_COMBATPISTOL" here to exclude it from the effect
+    },
   },
 
   RecoilSettings = {
