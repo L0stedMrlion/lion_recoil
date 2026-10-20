@@ -6,6 +6,13 @@ for name, data in pairs(config.RecoilSettings) do
 end
 
 local isWeaponLoopRunning = false
+local isDrunkAimingActive = false
+
+local function stopDrunkAiming()
+    if not isDrunkAimingActive then return end
+    Citizen.InvokeNative(0x4285804FD65D8066, 'DRUNK_SHAKE', true)
+    isDrunkAimingActive = false
+end
 
 local function applyRecoil(ped, weapon)
     local weaponData = RecoilSettings[weapon] or RecoilSettings[GetWeapontypeGroup(weapon)]
@@ -34,6 +41,17 @@ local function startWeaponLoop()
             local weapon = cache.weapon
             local weaponData = RecoilSettings[weapon] or RecoilSettings[GetWeapontypeGroup(weapon)]
 
+            if config.DrunkAiming.Enabled and config.DrunkAiming.Intensity > 0 then
+                if IsAimCamActive() then
+                    if not isDrunkAimingActive then
+                        ShakeGameplayCam('DRUNK_SHAKE', config.DrunkAiming.Intensity)
+                        isDrunkAimingActive = true
+                    end
+                else
+                    stopDrunkAiming()
+                end
+            end
+
             if weaponData then
                 if config.DisableAimPunching then
                     DisableControlAction(1, 140, true)
@@ -56,6 +74,7 @@ local function startWeaponLoop()
             Wait(0)
         end
 
+        stopDrunkAiming()
         isWeaponLoopRunning = false
     end)
 end
@@ -85,6 +104,12 @@ lib.onCache('weapon', function(weapon)
     end
 end)
 
+
+AddEventHandler('onResourceStop', function(resource)
+    if resource == GetCurrentResourceName() then
+        stopDrunkAiming()
+    end
+end)
 
 CreateThread(function()
     if config.RealisticFlashlight then
