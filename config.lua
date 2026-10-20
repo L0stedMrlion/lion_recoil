@@ -24,6 +24,12 @@ return {
   -- Disables combat roll, when pressing "backspace" while aiming with weapon
   DisableCombatRoll = false,
 
+  -- Adds camera shake while aiming (0.0 intensity disables the effect)
+  DrunkAiming = {
+    Enabled = false,
+    Intensity = 0.35,
+  },
+
   RecoilSettings = {
     -- Recoil Settings:
     -- Weapon hashes (e.g. WEAPON_PISTOL) will always override group hashes (e.g. GROUP_PISTOL)
