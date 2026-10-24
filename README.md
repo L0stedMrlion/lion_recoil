@@ -12,7 +12,6 @@ The resource allows you to customize recoil, camera shake, and weapon damage ind
 
 This is a **complete rework of the [original Lion Recoil (v1)](https://forum.cfx.re/t/free-lion-recoil/5238901)**.
 
----
 
 ## ✨ Features
 
@@ -32,8 +31,6 @@ This is a **complete rework of the [original Lion Recoil (v1)](https://forum.cfx
 * **Simple Configuration** – Easily customize everything through a single Lua configuration file
 * **Optimized** – Reworked weapon handling with no unnecessary permanent recoil loops
 
----
-
 ## 🚀 What's New in v2?
 
 * Completely rewritten recoil system
@@ -45,13 +42,9 @@ This is a **complete rework of the [original Lion Recoil (v1)](https://forum.cfx
 * Additional combat and gameplay options
 * Cleaner and more maintainable code
 
----
-
 ## 🌀 Dependencies
 
 * [ox_lib](https://github.com/overextended/ox_lib)
-
----
 
 ## 🦁 SUPPORT
 
