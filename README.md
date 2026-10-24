@@ -1,8 +1,6 @@
 <img width="1920" height="838" alt="image" src="https://github.com/user-attachments/assets/b3ad4425-da5a-4e3b-88a0-ce80889aedb4" />
 
-# 🦁 LION RECOIL
-
-# 🔫 Lion Recoil v2
+# 🔫 Lion Recoil (v2)
 
 Introducing **Lion Recoil v2**, a fully reworked version of my original FiveM recoil system.
 
