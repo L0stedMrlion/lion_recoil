@@ -2,26 +2,56 @@
 
 # 🦁 LION RECOIL
 
-## 📙 DESCRIPTION
+# 🔫 Lion Recoil v2
 
-This is v2 of my original script named lion_recoil [(link to old post)](https://forum.cfx.re/t/free-lion-recoil/5238901). I released the first version two years ago and haven't updated it since—until now.
+Introducing **Lion Recoil v2**, a fully reworked version of my original FiveM recoil system.
 
-Version 2 features full **ox_lib integration**, improved optimization, and a ton of new features.
+After nearly two years, Lion Recoil returns with improved optimization, full **ox_lib integration**, and additional features to make weapon handling more realistic and customizable.
 
-## 🙌 FEATURES
+The resource allows you to customize recoil, camera shake, and weapon damage individually or by weapon groups, alongside several optional gameplay improvements.
 
-* Custom shake, recoil and damage for every weapons or groups (like pistols; rifles)
-* Integrated ox_lib using caching
-* Option to disable combatroll, health regeneration, aim punching and more
-* Option to disable headshots and reticle (crosshair)
-* Optional download with/without reticle using streamed file without any unnecessary loops.
+This is a **complete rework of the [original Lion Recoil (v1)](https://forum.cfx.re/t/free-lion-recoil/5238901)**.
 
-## 🛠️ DEPENDENCIES
+---
 
-To ensure this script runs correctly, please make sure you have the following installed:
+## ✨ Features
 
-* **[ox_lib](https://github.com/overextended/ox_lib/releases)** (Required for caching and config to work)
+* **Custom Weapon Recoil** – Configure recoil individually for each weapon or entire weapon groups
+* **Custom Camera Shake** – Adjust camera shake intensity for different weapons
+* **Weapon Damage Multipliers** – Customize weapon damage through a simple configuration
+* **Weapon Group Support** – Apply shared settings to pistols, rifles, shotguns, SMGs, sniper rifles, and more
+* **Drunk Aiming** – Optional camera shake while aiming, with adjustable intensity and weapon exclusions
+* **Disable Headshots** – Option to disable critical headshot damage
+* **Disable Combat Roll** – Prevent players from rolling while aiming
+* **Disable Aim Punching** – Option to disable melee attacks while holding weapons
+* **Disable Health Regeneration** – Prevent automatic health regeneration
+* **Realistic Flashlight** – Keep weapon flashlights enabled while moving
+* **Reticle Options** – Available download variants with and without the reticle
+* **ox_lib Integration** – Uses weapon and player caching for efficient handling
+* **Version Checker** – Optional update checking when the resource starts
+* **Simple Configuration** – Easily customize everything through a single Lua configuration file
+* **Optimized** – Reworked weapon handling with no unnecessary permanent recoil loops
 
+---
+
+## 🚀 What's New in v2?
+
+* Completely rewritten recoil system
+* Full integration with `ox_lib` caching
+* Improved performance and resource optimization
+* Support for weapon-specific and group-based configurations
+* New configurable Drunk Aiming effect
+* Improved recoil and camera shake handling
+* Additional combat and gameplay options
+* Cleaner and more maintainable code
+
+---
+
+## 🌀 Dependencies
+
+* [ox_lib](https://github.com/overextended/ox_lib)
+
+---
 
 ## 🦁 SUPPORT
 
